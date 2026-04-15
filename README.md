@@ -52,6 +52,11 @@ npm run build
 php artisan serve
 ```
 
+## 🔐 Testing Credentials
+After running the seeder, you can log in with the following default administrative account:
+- **Email**: `test@gmail.com`
+- **Password**: `12345678`
+
 ## 📐 Versioning System
 The system utilizes a semantic versioning approach displayed globally in the dashboard footer.
 - **Current Stable**: `v1.1.0`

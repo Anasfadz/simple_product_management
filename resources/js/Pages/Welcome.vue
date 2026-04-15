@@ -73,19 +73,19 @@
       <div class="relative w-full max-w-5xl mx-auto mt-20 fade-in-up animation-delay-300 group">
         <!-- Floating Glass Pills - Left -->
         <div class="absolute left-[-5%] lg:left-[-10%] top-1/4 flex flex-col space-y-6 z-20">
-            <span class="animate-float px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">📦 Stock Tracking</span>
-            <span class="animate-float delay-100 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer ml-8 sm:ml-12">🔍 Barcode Scanning</span>
+            <span class="animate-float px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">{{ $t('📦 Stock Tracking') }}</span>
+            <span class="animate-float delay-100 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer ml-8 sm:ml-12">{{ $t('🔍 Barcode Scanning') }}</span>
             <div class="flex space-x-3 ml-2 sm:ml-4">
-                <span class="animate-float delay-200 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">🏷️ SKU Gen</span>
+                <span class="animate-float delay-200 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">{{ $t('🏷️ SKU Gen') }}</span>
             </div>
         </div>
 
         <!-- Floating Glass Pills - Right -->
         <div class="absolute right-[-5%] lg:right-[-10%] top-1/3 flex flex-col space-y-6 items-end z-20">
-            <span class="animate-float delay-300 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">🤝 Vendor Mgmt</span>
-            <span class="animate-float delay-100 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer mr-8 sm:mr-12">📊 Analytics</span>
+            <span class="animate-float delay-300 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">{{ $t('🤝 Vendor Mgmt') }}</span>
+            <span class="animate-float delay-100 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer mr-8 sm:mr-12">{{ $t('📊 Analytics') }}</span>
             <div class="flex space-x-3 mr-2 sm:mr-4">
-                <span class="animate-float delay-200 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">⚡ API Sync</span>
+                <span class="animate-float delay-200 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-700 bg-white/70 backdrop-blur-md border border-white/50 shadow-xl shadow-gray-200/50 hover:bg-orange-50 hover:text-orange-600 transition-colors cursor-pointer">{{ $t('⚡ API Sync') }}</span>
             </div>
         </div>
 
@@ -123,10 +123,10 @@
 
     <!-- Feature Section 1: Dashboard -->
     <section class="max-w-7xl mx-auto px-4 py-28 text-center">
-      <div class="inline-block bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase shadow-sm">Real-time Visibility</div>
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">Meet StockOps. Your All-In-One</h2>
-      <h2 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 mb-8 tracking-tight">Inventory Stack.</h2>
-      <p class="text-gray-500 mb-16 max-w-2xl mx-auto text-lg font-light">Empowering managers with gorgeous, analytical dashboards that simplify tracking, prevent shortages, and maximize ROI.</p>
+      <div class="inline-block bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase shadow-sm">{{ $t('Real-time Visibility') }}</div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">{{ $t('Meet StockOps. Your All-In-One') }}</h2>
+      <h2 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 mb-8 tracking-tight">{{ $t('Inventory Stack.') }}</h2>
+      <p class="text-gray-500 mb-16 max-w-2xl mx-auto text-lg font-light">{{ $t('Empowering managers with gorgeous, analytical dashboards that simplify tracking, prevent shortages, and maximize ROI.') }}</p>
       
       <div class="relative w-full max-w-5xl mx-auto group">
         <!-- Glow behind dashboard -->
@@ -137,16 +137,16 @@
           
           <!-- Micro-interactions on Dashboard -->
           <div class="hidden md:block absolute top-[15%] left-[5%] bg-white/80 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-100 animate-float z-20 hover:scale-105 transition-transform cursor-pointer">
-            <p class="text-xs text-gray-500 font-bold mb-1">Live Metrics</p>
-            <p class="text-sm font-black text-gray-900 flex items-center"><span class="w-2 h-2 rounded-full bg-green-500 mr-2 pulse-dot"></span> Watch your stock</p>
+            <p class="text-xs text-gray-500 font-bold mb-1">{{ $t('Live Metrics') }}</p>
+            <p class="text-sm font-black text-gray-900 flex items-center"><span class="w-2 h-2 rounded-full bg-green-500 mr-2 pulse-dot"></span> {{ $t('Watch your stock') }}</p>
           </div>
           
           <div class="hidden md:block absolute bottom-[20%] right-[3%] bg-white/80 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-100 animate-float delay-200 z-20 hover:scale-105 transition-transform cursor-pointer">
              <div class="flex items-center space-x-3">
                  <div class="bg-orange-100 p-2 rounded-full">📉</div>
                  <div>
-                    <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Alert</p>
-                    <p class="text-sm font-black text-gray-800">Low Stock Warning</p>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">{{ $t('Alert') }}</p>
+                    <p class="text-sm font-black text-gray-800">{{ $t('Low Stock Warning') }}</p>
                  </div>
              </div>
           </div>
@@ -163,9 +163,9 @@
       
       <div class="max-w-6xl mx-auto px-4 relative z-10">
         <div class="text-center mb-20 fade-in-up">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Awesome Ways To Improve</h2>
-          <h2 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 mt-2 tracking-tight">Supply Chain!</h2>
-          <p class="mt-6 text-gray-500 text-lg max-w-2xl mx-auto font-light">Our user-friendly platform provides precision tracking for every single item, ensuring you are never out of sync.</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">{{ $t('Awesome Ways To Improve') }}</h2>
+          <h2 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 mt-2 tracking-tight">{{ $t('Supply Chain!') }}</h2>
+          <p class="mt-6 text-gray-500 text-lg max-w-2xl mx-auto font-light">{{ $t('Our user-friendly platform provides precision tracking for every single item, ensuring you are never out of sync.') }}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -173,8 +173,8 @@
           <div class="group bg-[#faf8f6] p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-orange-100 transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-orange-200 relative overflow-hidden">
               <div class="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-full blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 translate-x-1/2 -translate-y-1/2"></div>
               <div class="text-orange-500 mb-6 bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">📄</div>
-              <h4 class="font-bold text-gray-900 text-xl mb-3">Automated Reports</h4>
-              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">Generate insights effortlessly for stakeholders and automatically distribute them via email.</p>
+              <h4 class="font-bold text-gray-900 text-xl mb-3">{{ $t('Automated Reports') }}</h4>
+              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">{{ $t('Generate insights effortlessly for stakeholders and automatically distribute them via e-mail.') }}</p>
               <div class="bg-white rounded-xl p-4 flex justify-between items-center border border-gray-100 group-hover:border-orange-100 transition-colors">
                   <div class="text-xs font-semibold text-gray-600 flex items-center"><svg class="w-4 h-4 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm8 6a1 1 0 10-2 0v2H8a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2v-2z" clip-rule="evenodd"/></svg> Export.pdf</div>
                   <span class="text-orange-500 text-xs font-bold bg-orange-50 px-2 py-1 rounded">1s</span>
@@ -185,8 +185,8 @@
           <div class="group bg-[#faf8f6] p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-blue-100 transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 relative overflow-hidden">
               <div class="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 translate-x-1/2 -translate-y-1/2"></div>
               <div class="text-blue-500 mb-6 bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">🏢</div>
-              <h4 class="font-bold text-gray-900 text-xl mb-3">Vendor Notifications</h4>
-              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">Quickly alert suppliers about low stock via automated Purchase Order requests routing.</p>
+              <h4 class="font-bold text-gray-900 text-xl mb-3">{{ $t('Vendor Notifications') }}</h4>
+              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">{{ $t('Quickly alert suppliers about low stock via automated Purchase Order requests routing.') }}</p>
               <div class="flex flex-col space-y-2">
                   <div class="bg-white px-3 py-2 rounded-lg text-xs font-medium text-gray-700 border border-gray-100 flex items-center shadow-sm group-hover:border-blue-100 transition-colors"><div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div> PO Sent to Vendor</div>
                   <div class="bg-white px-3 py-2 rounded-lg text-xs font-medium text-gray-700 border border-gray-100 flex items-center shadow-sm opacity-60"><div class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></div> Awaiting Acknowledgement</div>
@@ -197,8 +197,8 @@
           <div class="group bg-[#faf8f6] p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-pink-100 transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-pink-200 relative overflow-hidden">
               <div class="absolute top-0 right-0 w-32 h-32 bg-pink-100 rounded-full blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 translate-x-1/2 -translate-y-1/2"></div>
               <div class="text-pink-500 mb-6 bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">⚖️</div>
-              <h4 class="font-bold text-gray-900 text-xl mb-3">Stock Optimization</h4>
-              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">Set min/max thresholds to perfectly balance your warehouse stock quantities dynamically.</p>
+              <h4 class="font-bold text-gray-900 text-xl mb-3">{{ $t('Stock Optimization') }}</h4>
+              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">{{ $t('Set min/max thresholds to perfectly balance your warehouse stock quantities dynamically.') }}</p>
               <div class="bg-white p-4 rounded-xl flex items-center shadow-sm border border-gray-100 group-hover:border-pink-100 transition-colors">
                   <div class="relative flex w-10 h-10 mr-4">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-20"></span>
@@ -214,8 +214,8 @@
           <!-- Card 4 -->
           <div class="group bg-[#faf8f6] p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-indigo-100 transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-indigo-200 relative overflow-hidden">
               <div class="text-indigo-500 mb-6 bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">📅</div>
-              <h4 class="font-bold text-gray-900 text-xl mb-3">Delivery Scheduling</h4>
-              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">Coordinate incoming shipments on a unified calendar planner to avoid docking collisions.</p>
+              <h4 class="font-bold text-gray-900 text-xl mb-3">{{ $t('Delivery Scheduling') }}</h4>
+              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">{{ $t('Coordinate incoming shipments on a unified calendar planner to avoid docking collisions.') }}</p>
               <div class="bg-white rounded-lg shadow-sm border-l-4 border-indigo-400 p-3 text-xs font-medium text-gray-700 mb-2 transition-transform group-hover:translate-x-1">Shipment A - 10:00 AM</div>
               <div class="bg-white rounded-lg shadow-sm border-l-4 border-orange-400 p-3 text-xs font-medium text-gray-700 opacity-80 h-10 overflow-hidden line-clamp-1 transition-transform group-hover:translate-x-1 duration-200 delay-75">Shipment B - 12:30 PM</div>
           </div>
@@ -223,8 +223,8 @@
           <!-- Card 5 -->
           <div class="group bg-[#faf8f6] p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-green-100 transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-green-200 relative overflow-hidden">
               <div class="text-green-500 mb-6 bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">🚦</div>
-              <h4 class="font-bold text-gray-900 text-xl mb-3">Avoid Overstocking</h4>
-              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">Prevent tied-up capital by setting hard limits on specific SKUs or slow-moving items.</p>
+              <h4 class="font-bold text-gray-900 text-xl mb-3">{{ $t('Avoid Overstocking') }}</h4>
+              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">{{ $t('Prevent tied-up capital by setting hard limits on specific SKUs or slow-moving items.') }}</p>
               <div class="text-xs font-semibold text-gray-800 mb-3 flex justify-between"><span>Capacity Limit</span> <span class="text-gray-500">1,000 max</span></div>
               <div class="bg-gray-200 h-2.5 rounded-full overflow-hidden shadow-inner">
                   <div class="bg-gradient-to-r from-green-400 to-green-500 h-full w-[85%] rounded-full relative group-hover:w-[95%] transition-all duration-1000 ease-out">
@@ -237,8 +237,8 @@
           <!-- Card 6 -->
           <div class="group bg-[#faf8f6] p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-purple-100 transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-purple-200 relative overflow-hidden">
               <div class="text-purple-500 mb-6 bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">🌍</div>
-              <h4 class="font-bold text-gray-900 text-xl mb-3">Multi-Warehouse Sync</h4>
-              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">Manage several locations concurrently with a single, synchronized source of truth.</p>
+              <h4 class="font-bold text-gray-900 text-xl mb-3">{{ $t('Multi-Warehouse Sync') }}</h4>
+              <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">{{ $t('Manage several locations concurrently with a single, synchronized source of truth.') }}</p>
               <div class="bg-white p-3 rounded-xl border border-gray-100 text-xs font-semibold text-gray-700 mb-2 flex justify-between items-center shadow-sm"><span class="flex items-center"><span class="w-2.5 h-2.5 bg-green-500 rounded-full mr-2 shadow-sm shadow-green-300 animate-pulse"></span> NY Warehouse</span> <span class="bg-green-50 text-green-600 px-2 py-0.5 rounded text-[10px]">Synced</span></div>
               <div class="bg-white p-3 rounded-xl border border-gray-100 text-xs font-semibold text-gray-700 flex justify-between items-center shadow-sm opacity-70"><span class="flex items-center"><span class="w-2.5 h-2.5 bg-gray-400 rounded-full mr-2 shadow-sm"></span> LA Warehouse</span> <span class="bg-gray-50 text-gray-500 px-2 py-0.5 rounded text-[10px]">Pending</span></div>
           </div>
@@ -248,9 +248,9 @@
 
     <!-- Network / Journey -->
     <section class="max-w-7xl mx-auto px-4 py-32 text-center relative">
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">Unify Your Warehouses</h2>
-      <h2 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 mb-6 tracking-tight pb-2">Simplify The Journey.</h2>
-      <p class="text-gray-500 mb-16 max-w-2xl mx-auto text-lg font-light">Eliminate vertical barriers. Track deliveries across states, enhance stocking transparency, and unify your disparate operations.</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">{{ $t('Unify Your Warehouses') }}</h2>
+      <h2 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 mb-6 tracking-tight pb-2">{{ $t('Simplify The Journey.') }}</h2>
+      <p class="text-gray-500 mb-16 max-w-2xl mx-auto text-lg font-light">{{ $t('Eliminate vertical barriers. Track deliveries across states, enhance stocking transparency, and unify your disparate operations.') }}</p>
       
       <div class="w-full max-w-5xl mx-auto relative h-[600px] flex items-center justify-center p-8 bg-white shadow-2xl shadow-gray-200/50 rounded-[3rem] border border-gray-100 overflow-hidden group">
          <div class="absolute inset-0 bg-gradient-to-t from-gray-50 via-transparent to-white opacity-60 z-0"></div>
@@ -272,12 +272,12 @@
         <!-- Subtle Grid Pattern overlay -->
         <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
 
-        <h2 class="text-4xl md:text-6xl font-black mb-8 relative z-10 leading-tight tracking-tight">Build your perfect <br/> <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-300 to-orange-500">inventory system!</span></h2>
+        <h2 class="text-4xl md:text-6xl font-black mb-8 relative z-10 leading-tight tracking-tight">{{ $t('Build your perfect') }} <br/> <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-300 to-orange-500">{{ $t('inventory system!') }}</span></h2>
         <p class="text-gray-300 max-w-2xl mx-auto mb-12 text-lg font-light relative z-10">
-            Stop struggling with spreadsheets. Elevate your warehouse with StockOps unmatched accuracy, automation, and total flexibility.
+            {{ $t('Stop struggling with spreadsheets. Elevate your warehouse with StockOps unmatched accuracy, automation, and total flexibility.') }}
         </p>
         <Link :href="route('products.index')" class="bg-white text-gray-900 px-12 py-4 rounded-full font-bold shadow-lg shadow-white/10 hover:bg-orange-50 transition-all relative z-10 hover:shadow-xl hover:shadow-orange-500/20 hover:-translate-y-1 transform duration-300 inline-flex items-center text-lg">
-            View Products Dashboard
+            {{ $t('View Products Dashboard') }}
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
         </Link>
       </div>

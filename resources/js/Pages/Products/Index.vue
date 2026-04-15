@@ -6,7 +6,7 @@
             <div class="flex space-x-3">
                 <Link :href="route('products.create')" class="bg-gradient-to-r from-orange-400 to-orange-600 text-white px-5 py-2.5 rounded-xl hover:from-orange-500 hover:to-orange-700 transition shadow-[0_4px_14px_0_rgba(255,100,50,0.39)] text-[13px] font-bold flex items-center group">
                     <svg class="w-4 h-4 ml-[-2px] mr-1.5 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-                    Create Product
+                    {{ $t('Create Product') }}
                 </Link>
             </div>
         </div>
@@ -18,7 +18,7 @@
                     v-model="form.search" 
                     @keyup.enter="applyFilters"
                     type="text" 
-                    placeholder="Search Products..." 
+                    :placeholder="$t('Search Products...')" 
                     class="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 shadow-sm font-medium text-[13px]" 
                 />
                 <svg @click="applyFilters" class="w-4 h-4 text-gray-400 absolute left-3 top-2.5 cursor-pointer hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -26,12 +26,12 @@
              
              <div class="relative">
                  <select v-model="form.sort" @change="applyFilters" class="appearance-none bg-white border border-gray-200 pl-4 pr-10 py-2 rounded-lg shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 font-bold text-gray-700 text-[13px] pr-10 cursor-pointer">
-                    <option value="name_asc">Sort by Name (A-Z)</option>
-                    <option value="name_desc">Sort by Name (Z-A)</option>
-                    <option value="id_asc">Sort by ID (Lowest)</option>
-                    <option value="id_desc">Sort by ID (Highest)</option>
-                    <option value="created_at_desc">Date Created (Newest)</option>
-                    <option value="created_at_asc">Date Created (Oldest)</option>
+                    <option value="name_asc">{{ $t('Sort by Name (A-Z)') }}</option>
+                    <option value="name_desc">{{ $t('Sort by Name (Z-A)') }}</option>
+                    <option value="id_asc">{{ $t('Sort by ID (Lowest)') }}</option>
+                    <option value="id_desc">{{ $t('Sort by ID (Highest)') }}</option>
+                    <option value="created_at_desc">{{ $t('Date Created (Newest)') }}</option>
+                    <option value="created_at_asc">{{ $t('Date Created (Oldest)') }}</option>
                  </select>
              </div>
              
@@ -46,7 +46,7 @@
 
              <button @click="resetFilters" class="px-4 py-2 bg-white border border-gray-200 text-gray-500 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-gray-50 hover:text-gray-900 transition-all shadow-sm flex items-center group">
                  <svg class="w-3.5 h-3.5 mr-1.5 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                 Reset
+                 {{ $t('Reset') }}
              </button>
              
         </div>
@@ -68,12 +68,12 @@
                     <!-- Stats Grid -->
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                            <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1">Unit Price</p>
+                            <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1">{{ $t('Unit Price') }}</p>
                             <p class="font-bold text-[13px] text-gray-900">RM {{ new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(product.price) }}</p>
                         </div>
                         <div>
-                            <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1">In Stock</p>
-                            <p class="font-bold text-[13px] text-gray-900">{{ product.quantity }} <span class="text-gray-500 font-medium lowercase">units</span></p>
+                            <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1">{{ $t('In Stock') }}</p>
+                            <p class="font-bold text-[13px] text-gray-900">{{ product.quantity }} <span class="text-gray-500 font-medium lowercase">{{ $t('units') }}</span></p>
                         </div>
                     </div>
 
@@ -81,7 +81,7 @@
                     <div class="mb-5 p-3.5 bg-orange-50/50 rounded-2xl border border-orange-100/30">
                         <p class="text-[10px] uppercase font-bold text-orange-500 tracking-widest mb-1.5 flex items-center">
                             <span class="mr-1.5">💰</span>
-                            Estimated Worth
+                            {{ $t('Estimated Worth') }}
                         </p>
                         <p class="font-black text-lg text-orange-600 tracking-tight">
                             RM {{ new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(product.price * product.quantity) }}
@@ -97,11 +97,11 @@
                     <div class="flex items-stretch gap-2 mt-auto">
                         <Link :href="route('products.edit', product.id)" class="flex-1 px-4 py-2 bg-gradient-to-r from-orange-400 to-orange-600 text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:from-orange-500 hover:to-orange-700 transition-all shadow-sm shadow-orange-500/20 text-center flex items-center justify-center">
                             <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                            Edit
+                            {{ $t('Edit') }}
                         </Link>
                         <button @click="deleteProduct(product.id)" class="flex-1 px-4 py-2 bg-red-50 text-red-600 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm border border-red-100/50 flex items-center justify-center group">
                             <svg class="w-3.5 h-3.5 mr-2 text-red-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                            Delete
+                            {{ $t('Delete') }}
                         </button>
                     </div>
                 </div>
@@ -112,10 +112,10 @@
                 <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-4">
                     <span class="text-3xl text-gray-300">📦</span>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-1">No products found</h3>
-                <p class="text-sm text-gray-500 mb-6 font-medium">Create your first product to see it populate here!</p>
+                <h3 class="text-lg font-bold text-gray-900 mb-1">{{ $t('No products found') }}</h3>
+                <p class="text-sm text-gray-500 mb-6 font-medium">{{ $t('Create your first product to see it populate here!') }}</p>
                 <Link :href="route('products.create')" class="bg-gray-900 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-gray-200 hover:bg-orange-500 hover:shadow-orange-500/30 transition-all hover:-translate-y-0.5">
-                    Create Product
+                    {{ $t('Create Product') }}
                 </Link>
             </div>
         </div>
@@ -123,7 +123,7 @@
         <!-- Pagination -->
         <div class="mt-6 flex justify-between items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-sm" v-if="products.links && products.data.length > 0">
             <div class="text-[13px] font-bold text-gray-400">
-                Showing <span class="text-gray-900">{{ products.from }}</span> to <span class="text-gray-900">{{ products.to }}</span> of <span class="text-gray-900">{{ products.total }}</span> entries
+                {{ $t('Showing') }} <span class="text-gray-900">{{ products.from }}</span> {{ $t('to') }} <span class="text-gray-900">{{ products.to }}</span> {{ $t('of') }} <span class="text-gray-900">{{ products.total }}</span> {{ $t('entries') }}
             </div>
             <div class="flex items-center space-x-1.5">
                 <template v-for="(link, i) in products.links" :key="i">
@@ -187,7 +187,7 @@ const resetFilters = () => {
 };
 
 const deleteProduct = (id) => {
-    if (confirm('Are you sure you want to delete this product?')) {
+    if (confirm($t('Are you sure you want to delete this product?'))) {
         router.delete(route('products.destroy', id), {
             preserveScroll: true
         });

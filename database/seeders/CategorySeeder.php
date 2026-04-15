@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -12,9 +13,16 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ['Electronics', 'Furniture', 'Clothing'];
+        $user = User::where('email', 'test@gmail.com')->first();
+        if (!$user) return;
+
+        $categories = ['Electronics', 'Furniture', 'Clothing', 'Books', 'Home Decor'];
+        
         foreach ($categories as $category) {
-            \App\Models\Category::create(['name' => $category]);
+            Category::create([
+                'user_id' => $user->id,
+                'name' => $category
+            ]);
         }
     }
 }

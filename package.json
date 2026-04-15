@@ -21,6 +21,9 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
-        "laravel-vue-i18n": "^2.8.0"
+        "chart.js": "^4.5.1",
+        "laravel-vue-i18n": "^2.8.0",
+        "sweetalert2": "^11.26.24",
+        "vue-chartjs": "^5.3.3"
     }
 }

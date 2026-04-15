@@ -20,10 +20,29 @@ Route::get('language/{locale}', function ($locale) {
 })->name('language.switch');
 Route::middleware('auth')->group(function () {
     Route::resource('products', \App\Http\Controllers\ProductController::class)->except('show');
+    Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except('show');
+    Route::get('/api/search', [\App\Http\Controllers\ProductController::class, 'quickSearch'])->name('api.search');
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $user = auth()->user();
+    
+    $stats = [
+        'total_products' => $user->products()->count(),
+        'total_value' => $user->products()->sum(\DB::raw('price * quantity')),
+        'low_stock_count' => $user->products()->where('quantity', '<', 5)->count(),
+    ];
+
+    $topProducts = $user->products()
+        ->select('name', \DB::raw('price * quantity as total_value'))
+        ->orderByDesc('total_value')
+        ->limit(10)
+        ->get();
+
+    return Inertia::render('Dashboard', [
+        'stats' => $stats,
+        'topProducts' => $topProducts
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

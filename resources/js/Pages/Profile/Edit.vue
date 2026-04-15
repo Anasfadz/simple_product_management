@@ -1,5 +1,5 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import MainLayout from '@/Layouts/MainLayout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
@@ -18,39 +18,39 @@ defineProps({
 <template>
     <Head title="Profile" />
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800"
-            >
-                Profile
-            </h2>
-        </template>
+    <MainLayout>
+        <div class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <!-- Header section -->
+            <div class="mb-4">
+                <h2 class="text-3xl font-black text-gray-900 tracking-tight">Account Settings</h2>
+                <p class="text-gray-500 font-medium mt-1">Manage your storefront profile, security, and administrative access.</p>
+            </div>
 
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
-                <div
-                    class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
-                >
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class="max-w-xl"
-                    />
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Profile Information -->
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="max-w-xl">
+                        <UpdateProfileInformationForm
+                            :must-verify-email="mustVerifyEmail"
+                            :status="status"
+                        />
+                    </div>
                 </div>
 
-                <div
-                    class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
-                >
-                    <UpdatePasswordForm class="max-w-xl" />
+                <!-- Update Password -->
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="max-w-xl">
+                        <UpdatePasswordForm />
+                    </div>
                 </div>
 
-                <div
-                    class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
-                >
-                    <DeleteUserForm class="max-w-xl" />
+                <!-- Delete Account -->
+                <div class="bg-white border border-red-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow bg-gradient-to-br from-white to-red-50/30">
+                    <div class="max-w-xl">
+                        <DeleteUserForm />
+                    </div>
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </MainLayout>
 </template>

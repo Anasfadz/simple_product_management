@@ -27,7 +27,9 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
 const widthClass = computed(() => {
     return {
-        48: 'w-48',
+        '48': 'w-48',
+        '56': 'w-56',
+        '64': 'w-64',
     }[props.width.toString()];
 });
 
@@ -36,6 +38,8 @@ const alignmentClasses = computed(() => {
         return 'ltr:origin-top-left rtl:origin-top-right start-0';
     } else if (props.align === 'right') {
         return 'ltr:origin-top-right rtl:origin-top-left end-0';
+    } else if (props.align === 'top') {
+        return 'origin-bottom mb-2 bottom-full';
     } else {
         return 'origin-top';
     }
@@ -67,9 +71,8 @@ const open = ref(false);
         >
             <div
                 v-show="open"
-                class="absolute z-50 mt-2 rounded-md shadow-lg"
+                class="absolute z-50 rounded-md shadow-lg"
                 :class="[widthClass, alignmentClasses]"
-                style="display: none"
                 @click="open = false"
             >
                 <div

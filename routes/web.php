@@ -6,10 +6,21 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register')
+    ]);
 })->name('home');
 
-Route::resource('products', \App\Http\Controllers\ProductController::class)->except('show');
+Route::get('language/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'my'])) {
+        session()->put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('language.switch');
+Route::middleware('auth')->group(function () {
+    Route::resource('products', \App\Http\Controllers\ProductController::class)->except('show');
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

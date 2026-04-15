@@ -12,19 +12,31 @@
         </div>
         
         <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">Products <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
-          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">Inventory <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
-          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">Suppliers <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
-          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">Reports <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
+          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">{{ $t('Products') }} <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
+          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">{{ $t('Inventory') }} <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
+          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">{{ $t('Suppliers') }} <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
+          <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">{{ $t('Reports') }} <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
         </div>
 
         <div class="flex items-center space-x-5">
-          <Link :href="route('products.index')" class="relative inline-flex h-10 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 group hover:-translate-y-0.5 transition-transform duration-300">
-            <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,#ffb07a_0%,#f97316_50%,#ffb07a_100%)] transition-colors duration-500" />
-            <span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white backdrop-blur-3xl px-6 py-1 text-sm font-semibold text-gray-900 group-hover:bg-gray-50 transition-colors">
-              Go To App
-            </span>
-          </Link>
+          <!-- Language Switcher -->
+          <div class="flex items-center bg-gray-100 rounded-full p-1 border border-gray-200">
+             <a :href="route('language.switch', 'en')" class="px-3 py-1 text-xs font-bold rounded-full transition-colors" :class="$page.props.locale === 'en' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">EN</a>
+             <a :href="route('language.switch', 'my')" class="px-3 py-1 text-xs font-bold rounded-full transition-colors" :class="$page.props.locale === 'my' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">MY</a>
+          </div>
+
+          <template v-if="$page.props.auth.user">
+            <Link :href="route('products.index')" class="relative inline-flex h-10 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 group hover:-translate-y-0.5 transition-transform duration-300">
+              <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,#ffb07a_0%,#f97316_50%,#ffb07a_100%)] transition-colors duration-500" />
+              <span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white backdrop-blur-3xl px-6 py-1 text-sm font-semibold text-gray-900 group-hover:bg-gray-50 transition-colors">
+                {{ $t('Go To App') }}
+              </span>
+            </Link>
+          </template>
+          <template v-else>
+            <Link v-if="canLogin" :href="route('login')" class="font-semibold text-gray-600 hover:text-orange-500 transition-colors">{{ $t('Log in') }}</Link>
+            <Link v-if="canRegister" :href="route('register')" class="ml-4 font-semibold bg-gray-900 text-white hover:bg-gray-800 px-5 py-2.5 rounded-full shadow-lg shadow-gray-200 transition-all hover:-translate-y-0.5">{{ $t('Register') }}</Link>
+          </template>
         </div>
       </div>
     </nav>
@@ -39,21 +51,21 @@
       </div>
 
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 tracking-tighter leading-[1.1] max-w-5xl mx-auto drop-shadow-sm fade-in-up">
-        Streamline Your Inventory &
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-500 to-orange-600 block mt-2 pb-2">Product Operations</span>
+        {{ $t('Streamline Your Inventory &') }}
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-500 to-orange-600 block mt-2 pb-2">{{ $t('Product Operations') }}</span>
       </h1>
       
       <p class="mt-8 text-xl text-gray-500 max-w-2xl mx-auto font-light fade-in-up animation-delay-100">
-        StockOps connects your entire supply chain, empowering managers and ground staff to tackle key inventory challenges effortlessly.
+        {{ $t('StockOps connects your entire supply chain, empowering managers and ground staff to tackle key inventory challenges effortlessly.') }}
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 fade-in-up animation-delay-200">
         <Link :href="route('products.index')" class="inline-flex items-center justify-center bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-800 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 group">
-          Start managing products
+          {{ $t('Start managing products') }}
           <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </Link>
         <button class="inline-flex items-center justify-center bg-white border-2 border-gray-200 text-gray-900 px-8 py-4 rounded-full text-lg font-medium hover:border-gray-300 hover:bg-gray-50 hover:-translate-y-1 transition-all duration-300">
-          Book a Demo
+          {{ $t('Book a Demo') }}
         </button>
       </div>
 
@@ -276,8 +288,14 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 
+defineProps({
+    canLogin: Boolean,
+    canRegister: Boolean,
+});
+
+const page = usePage();
 const scrolled = ref(false);
 
 const handleScroll = () => {

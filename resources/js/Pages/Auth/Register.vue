@@ -22,11 +22,16 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Register" />
+        <Head :title="$t('Register')" />
 
-        <form @submit.prevent="submit">
+        <div class="mb-8 text-center">
+            <h2 class="text-3xl font-black text-gray-900 tracking-tight">{{ $t('Join StockOps') }}</h2>
+            <p class="text-sm text-gray-500 mt-2 font-medium">{{ $t('Please fill in your details to get started.') }}</p>
+        </div>
+
+        <form @submit.prevent="submit" class="space-y-4">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" :value="$t('Name')" class="ml-1 mb-1 font-semibold text-gray-700" />
 
                 <TextInput
                     id="name"
@@ -38,11 +43,11 @@ const submit = () => {
                     autocomplete="name"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <InputError class="mt-1" :message="form.errors.name" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+            <div>
+                <InputLabel for="email" :value="$t('Email')" class="ml-1 mb-1 font-semibold text-gray-700" />
 
                 <TextInput
                     id="email"
@@ -53,11 +58,11 @@ const submit = () => {
                     autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-1" :message="form.errors.email" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+            <div>
+                <InputLabel for="password" :value="$t('Password')" class="ml-1 mb-1 font-semibold text-gray-700" />
 
                 <TextInput
                     id="password"
@@ -68,13 +73,14 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password" />
+                <InputError class="mt-1" :message="form.errors.password" />
             </div>
 
-            <div class="mt-4">
+            <div>
                 <InputLabel
                     for="password_confirmation"
-                    value="Confirm Password"
+                    :value="$t('Confirm Password')"
+                    class="ml-1 mb-1 font-semibold text-gray-700"
                 />
 
                 <TextInput
@@ -87,26 +93,28 @@ const submit = () => {
                 />
 
                 <InputError
-                    class="mt-2"
+                    class="mt-1"
                     :message="form.errors.password_confirmation"
                 />
             </div>
 
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Already registered?
-                </Link>
-
+            <div class="mt-8 flex flex-col space-y-3">
                 <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
+                    class="w-full text-center"
+                    :class="{ 'opacity-25 scale-95': form.processing }"
                     :disabled="form.processing"
                 >
-                    Register
+                    {{ $t('Register') }}
                 </PrimaryButton>
+
+                <p class="text-sm text-center text-gray-500 font-medium">
+                    <Link
+                        :href="route('login')"
+                        class="text-orange-500 hover:text-orange-600 focus:outline-none focus:underline transition-colors"
+                    >
+                        {{ $t('Already registered?') }}
+                    </Link>
+                </p>
             </div>
         </form>
     </GuestLayout>

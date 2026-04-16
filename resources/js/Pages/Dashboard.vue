@@ -3,21 +3,15 @@
         <Head title="Dashboard" />
 
         <!-- Welcome Banner -->
-        <div class="mb-8 bg-gradient-to-r from-orange-400 to-orange-600 rounded-3xl p-8 lg:p-10 text-white relative overflow-hidden shadow-xl shadow-orange-500/20">
+        <div class="mb-8 bg-gradient-to-r from-orange-400 to-orange-600 rounded-3xl p-6 md:p-8 lg:p-10 text-white relative overflow-hidden shadow-xl shadow-orange-500/20">
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between">
                 <div>
-                    <h2 class="text-3xl font-black mb-2 tracking-tight">
+                    <h2 class="text-2xl md:text-3xl font-black mb-2 tracking-tight">
                         {{ $t('Hello') }}, {{ $page.props.auth.user.name }}! 👋
                     </h2>
-                    <p class="text-white/80 font-medium max-w-lg leading-relaxed text-sm">
+                    <p class="text-white/80 font-medium max-w-lg leading-relaxed text-xs md:text-sm">
                         {{ $t("Welcome back to StockOps. Here's what's happening with your inventory and products today.") }}
                     </p>
-                </div>
-                <div class="mt-6 md:mt-0 flex space-x-3">
-                    <Link :href="route('products.create')" class="bg-white text-orange-600 px-6 py-3 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center group">
-                        <svg class="w-4 h-4 mr-2 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path></svg>
-                        {{ $t('New Product') }}
-                    </Link>
                 </div>
             </div>
             <!-- Background Decorations -->
@@ -74,11 +68,11 @@
         </div>
 
         <!-- Top Products Chart -->
-        <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm mb-12">
-            <div class="flex items-center justify-between mb-8">
+        <div class="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm mb-12">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 space-y-4 md:space-y-0">
                 <div>
                     <h3 class="text-lg font-black text-gray-900 tracking-tight">{{ $t('Top 10 High-Value Products') }}</h3>
-                    <p class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">{{ $t('Cumulative Inventory Value (Price × Stock)') }}</p>
+                    <p class="text-[10px] md:text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">{{ $t('Cumulative Inventory Value (Price × Stock)') }}</p>
                 </div>
                 <div class="flex items-center space-x-2">
                     <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
@@ -86,7 +80,7 @@
                 </div>
             </div>
             
-            <div class="h-[400px] w-full relative">
+            <div class="h-[250px] md:h-[400px] w-full relative">
                 <Bar 
                     :data="chartData" 
                     :options="chartOptions" 

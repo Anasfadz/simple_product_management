@@ -18,25 +18,37 @@
           <a href="#" class="hover:text-orange-500 transition-colors flex items-center group">{{ $t('Reports') }} <span class="group-hover:translate-y-[2px] transition-transform"><svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span></a>
         </div>
 
-        <div class="flex items-center space-x-5">
+        <div class="flex items-center space-x-4">
           <!-- Language Switcher -->
-          <div class="flex items-center bg-gray-100 rounded-full p-1 border border-gray-200">
-             <a :href="route('language.switch', 'en')" class="px-3 py-1 text-xs font-bold rounded-full transition-colors" :class="$page.props.locale === 'en' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">EN</a>
-             <a :href="route('language.switch', 'my')" class="px-3 py-1 text-xs font-bold rounded-full transition-colors" :class="$page.props.locale === 'my' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">MY</a>
+          <div class="flex items-center bg-gray-100 rounded-full p-1 border border-gray-200 shadow-inner">
+             <a :href="route('language.switch', 'en')" class="px-2.5 sm:px-3 py-1 text-[10px] font-black rounded-full transition-all uppercase tracking-widest" :class="$page.props.locale === 'en' ? 'bg-white text-orange-600 shadow-sm ring-1 ring-black/5' : 'text-gray-400 hover:text-gray-600 hover:bg-white/50'">EN</a>
+             <a :href="route('language.switch', 'my')" class="px-2.5 sm:px-3 py-1 text-[10px] font-black rounded-full transition-all uppercase tracking-widest" :class="$page.props.locale === 'my' ? 'bg-white text-orange-600 shadow-sm ring-1 ring-black/5' : 'text-gray-400 hover:text-gray-600 hover:bg-white/50'">MY</a>
           </div>
 
-          <template v-if="$page.props.auth.user">
-            <Link :href="route('products.index')" class="relative inline-flex h-10 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 group hover:-translate-y-0.5 transition-transform duration-300">
-              <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,#ffb07a_0%,#f97316_50%,#ffb07a_100%)] transition-colors duration-500" />
-              <span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white backdrop-blur-3xl px-6 py-1 text-sm font-semibold text-gray-900 group-hover:bg-gray-50 transition-colors">
-                {{ $t('Go To App') }}
-              </span>
+          <div class="flex items-center space-x-3">
+            <!-- Mobile Go To App (Always visible, redirect to login if guest) -->
+            <Link :href="route('products.index')" class="md:hidden relative inline-flex h-9 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-gray-400 group active:scale-95 transition-all">
+                <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ffb07a_0%,#f97316_50%,#ffb07a_100%)]" />
+                <span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white backdrop-blur-3xl px-4 py-1 text-xs font-black uppercase tracking-widest text-gray-900 group-hover:bg-gray-50 transition-colors">
+                  {{ $t('Go To App') }}
+                </span>
             </Link>
-          </template>
-          <template v-else>
-            <Link v-if="canLogin" :href="route('login')" class="font-semibold text-gray-600 hover:text-orange-500 transition-colors">{{ $t('Log in') }}</Link>
-            <Link v-if="canRegister" :href="route('register')" class="ml-4 font-semibold bg-gray-900 text-white hover:bg-gray-800 px-5 py-2.5 rounded-full shadow-lg shadow-gray-200 transition-all hover:-translate-y-0.5">{{ $t('Register') }}</Link>
-          </template>
+
+            <template v-if="$page.props.auth.user">
+              <Link :href="route('products.index')" class="hidden md:flex relative inline-flex h-10 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 group hover:-translate-y-0.5 transition-transform duration-300">
+                <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ffb07a_0%,#f97316_50%,#ffb07a_100%)] transition-colors duration-500" />
+                <span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white backdrop-blur-3xl px-6 py-1 text-sm font-semibold text-gray-900 group-hover:bg-gray-50 transition-colors">
+                  {{ $t('Go To App') }}
+                </span>
+              </Link>
+            </template>
+            <template v-else>
+              <div class="hidden md:flex items-center">
+                <Link v-if="canLogin" :href="route('login')" class="font-semibold text-gray-600 hover:text-orange-500 transition-colors">{{ $t('Log in') }}</Link>
+                <Link v-if="canRegister" :href="route('register')" class="ml-4 font-semibold bg-gray-900 text-white hover:bg-gray-800 px-5 py-2.5 rounded-full shadow-lg shadow-gray-200 transition-all hover:-translate-y-0.5">{{ $t('Register') }}</Link>
+              </div>
+            </template>
+          </div>
         </div>
       </div>
     </nav>

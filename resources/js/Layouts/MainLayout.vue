@@ -5,8 +5,11 @@
             
             <!-- Unified Animated Sidebar -->
             <aside 
-                :class="isSidebarOpen ? 'w-64 lg:w-72' : 'w-20'"
-                class="bg-[#fdfdfd] border-r border-gray-100 flex flex-col relative z-20 shrink-0 h-full hidden md:flex transition-all duration-300 ease-in-out">
+                :class="[
+                    isSidebarOpen ? 'w-64 lg:w-72' : 'w-20',
+                    isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+                ]"
+                class="bg-[#fdfdfd] border-r border-gray-100 flex flex-col fixed md:relative z-40 shrink-0 h-full transition-all duration-300 ease-in-out shadow-2xl md:shadow-none">
                 
                 <!-- Branding Header -->
                 <div class="h-[72px] flex items-center border-b border-gray-50/50 justify-center shrink-0" :class="isSidebarOpen ? 'px-6 justify-between' : 'px-0 justify-center'">
@@ -102,16 +105,20 @@
             <!-- Main Content Area -->
             <div class="flex-1 flex flex-col min-w-0 bg-[#ffffff] relative z-0 transition-all duration-300">
                 <!-- Top Header -->
-                <header class="h-[72px] border-b border-gray-100 flex items-center justify-between px-8 bg-[#ffffff] shrink-0">
-                    <div class="flex items-center text-[13px] font-bold text-gray-900 group">
-                        <template v-for="(crumb, index) in breadcrumbs" :key="index">
-                            <svg v-if="index > 0" class="w-3 h-3 text-gray-300 mx-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-                            <Link v-if="crumb.route" :href="crumb.route" class="text-gray-400 font-medium hover:text-gray-900 transition-colors">{{ $t(crumb.label) }}</Link>
-                            <span v-else :class="crumb.active ? 'text-gray-900 font-black tracking-tight' : 'text-gray-400 font-medium'">{{ $t(crumb.label) }}</span>
-                        </template>
+                <header class="h-[72px] border-b border-gray-100 flex items-center justify-between px-4 md:px-8 bg-[#ffffff] shrink-0 sticky top-0 z-30">
+                    <div class="flex items-center">
+                        <div class="flex items-center text-[13px] font-bold text-gray-900 group">
+                            <template v-for="(crumb, index) in breadcrumbs" :key="index">
+                                <svg v-if="index > 0" class="w-2.5 h-2.5 text-gray-300 mx-2 md:mx-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                                <div class="flex items-center" :class="index === 0 ? 'hidden sm:flex' : 'flex'">
+                                    <Link v-if="crumb.route" :href="crumb.route" class="text-gray-400 font-medium hover:text-gray-900 transition-colors whitespace-nowrap">{{ $t(crumb.label) }}</Link>
+                                    <span v-else :class="crumb.active ? 'text-gray-900 font-black tracking-tight' : 'text-gray-400 font-medium'" class="whitespace-nowrap">{{ $t(crumb.label) }}</span>
+                                </div>
+                            </template>
+                        </div>
                     </div>
 
-                    <!-- Search Input -->
+                    <!-- Search Input (Desktop only) -->
                     <div @click="$refs.commandPalette.open()" class="hidden md:flex max-w-md w-full mx-auto relative group pl-10 pr-10 cursor-pointer">
                         <div class="absolute inset-y-0 left-10 pl-3.5 flex items-center pointer-events-none">
                             <svg class="h-4 w-4 text-gray-400 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -122,24 +129,34 @@
                         </div>
                     </div>
 
-                    <!-- Language Switcher -->
-                    <div class="flex items-center bg-gray-50/50 p-1 rounded-xl border border-gray-100 shrink-0 ml-4">
-                        <button 
-                            @click="setLanguage('en')"
-                            :class="getActiveLanguage() === 'en' ? 'bg-white text-orange-600 shadow-sm ring-1 ring-black/5' : 'text-gray-400 hover:text-gray-600'"
-                            class="px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all duration-200"
-                        >
-                            EN
+                    <!-- Language Switcher & Post Search (Mobile) -->
+                    <div class="flex items-center space-x-2">
+                        <!-- Mobile Search Trigger -->
+                        <button @click="$refs.commandPalette.open()" class="md:hidden p-2 text-gray-400 hover:text-orange-500 hover:bg-orange-50 rounded-xl transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </button>
-                        <button 
-                            @click="setLanguage('my')"
-                            :class="getActiveLanguage() === 'my' ? 'bg-white text-orange-600 shadow-sm ring-1 ring-black/5' : 'text-gray-400 hover:text-gray-600'"
-                            class="px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all duration-200"
-                        >
-                            MY
-                        </button>
+
+                        <div class="flex items-center bg-gray-50/50 p-1 rounded-xl border border-gray-100 shrink-0">
+                            <button 
+                                @click="setLanguage('en')"
+                                :class="getActiveLanguage() === 'en' ? 'bg-white text-orange-600 shadow-sm ring-1 ring-black/5' : 'text-gray-400 hover:text-gray-600'"
+                                class="px-2 md:px-3 py-1.5 rounded-lg text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-200"
+                            >
+                                EN
+                            </button>
+                            <button 
+                                @click="setLanguage('my')"
+                                :class="getActiveLanguage() === 'my' ? 'bg-white text-orange-600 shadow-sm ring-1 ring-black/5' : 'text-gray-400 hover:text-gray-600'"
+                                class="px-2 md:px-3 py-1.5 rounded-lg text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-200"
+                            >
+                                MY
+                            </button>
+                        </div>
                     </div>
                 </header>
+
+                <!-- Mobile Overlay Backdrop -->
+                <div v-if="isMobileMenuOpen" @click="isMobileMenuOpen = false" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden transition-opacity"></div>
 
                 <main class="flex-1 overflow-y-auto bg-white p-6 sm:p-8 lg:px-12 relative w-full">
                     <div v-if="$page.props.flash.success" class="mb-6 bg-green-50 text-green-700 px-4 py-3 rounded-xl text-sm font-semibold flex items-center shadow-sm shadow-green-100">
@@ -168,8 +185,29 @@
             </div>
         </div>
         <CommandPalette ref="commandPalette" />
+
+        <!-- Floating Mobile Menu Button -->
+        <button 
+            @click="isMobileMenuOpen = !isMobileMenuOpen" 
+            class="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-orange-500 text-white rounded-full shadow-[0_8px_30px_rgba(249,115,22,0.4)] flex items-center justify-center hover:bg-orange-600 active:scale-95 transition-all outline-none border-none animate-bounce-subtle"
+        >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path v-if="!isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
     </div>
 </template>
+
+<style>
+@keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+.animate-bounce-subtle {
+    animation: bounce-subtle 3s infinite ease-in-out;
+}
+</style>
 
 <script setup>
 import { ref, computed, watch } from 'vue';
@@ -181,6 +219,7 @@ import CommandPalette from '@/Components/CommandPalette.vue';
 import { loadLanguageAsync, getActiveLanguage } from 'laravel-vue-i18n';
 
 const isSidebarOpen = ref(true);
+const isMobileMenuOpen = ref(false);
 const commandPalette = ref(null);
 const page = usePage();
 
@@ -228,6 +267,11 @@ watch(() => page.props.flash.success, (message) => {
         });
     }
 }, { immediate: true });
+
+// Auto-close mobile menu on route change
+watch(() => page.url, () => {
+    isMobileMenuOpen.value = false;
+});
 
 const breadcrumbs = computed(() => {
     const crumbs = [{ label: 'StockOps Store', route: null, active: false }];

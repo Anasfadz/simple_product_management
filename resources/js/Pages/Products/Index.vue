@@ -1,19 +1,17 @@
 <template>
     <MainLayout>
         <!-- Page Title & Actions -->
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
             <h2 class="font-black text-2xl text-gray-900 tracking-tight">{{ $t('Products') }}</h2>
-            <div class="flex space-x-3">
-                <Link :href="route('products.create')" class="bg-gradient-to-r from-orange-400 to-orange-600 text-white px-5 py-2.5 rounded-xl hover:from-orange-500 hover:to-orange-700 transition shadow-[0_4px_14px_0_rgba(255,100,50,0.39)] text-[13px] font-bold flex items-center group">
-                    <svg class="w-4 h-4 ml-[-2px] mr-1.5 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-                    {{ $t('Create Product') }}
-                </Link>
-            </div>
+            <Link :href="route('products.create')" class="w-full sm:w-auto bg-gradient-to-r from-orange-400 to-orange-600 text-white px-5 py-2.5 rounded-xl hover:from-orange-500 hover:to-orange-700 transition shadow-[0_4px_14px_0_rgba(255,100,50,0.39)] text-[13px] font-bold flex items-center justify-center group">
+                <svg class="w-4 h-4 ml-[-2px] mr-1.5 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                {{ $t('Create Product') }}
+            </Link>
         </div>
 
         <!-- Filter Bar like in the mock -->
-        <div class="mb-6 flex flex-wrap gap-3 items-center text-[13px] font-bold text-gray-700">
-             <div class="relative max-w-xs w-full lg:w-64">
+        <div class="mb-6 flex flex-wrap gap-2 md:gap-3 items-center text-[13px] font-bold text-gray-700">
+             <div class="relative w-full md:w-64">
                 <input 
                     v-model="form.search" 
                     @keyup.enter="applyFilters"
@@ -24,8 +22,8 @@
                 <svg @click="applyFilters" class="w-4 h-4 text-gray-400 absolute left-3 top-2.5 cursor-pointer hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
              </div>
              
-             <div class="relative">
-                 <select v-model="form.sort" @change="applyFilters" class="appearance-none bg-white border border-gray-200 pl-4 pr-10 py-2 rounded-lg shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 font-bold text-gray-700 text-[13px] pr-10 cursor-pointer">
+             <div class="flex-1 md:flex-none">
+                 <select v-model="form.sort" @change="applyFilters" class="w-full bg-white border border-gray-200 pl-3 pr-8 py-2 rounded-lg shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 font-bold text-gray-700 text-[12px] md:text-[13px] cursor-pointer">
                     <option value="name_asc">{{ $t('Sort by Name (A-Z)') }}</option>
                     <option value="name_desc">{{ $t('Sort by Name (Z-A)') }}</option>
                     <option value="id_asc">{{ $t('Sort by ID (Lowest)') }}</option>
@@ -35,20 +33,17 @@
                  </select>
              </div>
              
-             <div class="relative">
-                 <select v-model="form.category_id" @change="applyFilters" class="appearance-none bg-white border border-gray-200 pl-4 pr-10 py-2 rounded-lg shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 font-bold text-gray-700 text-[13px] cursor-pointer">
+             <div class="flex-1 md:flex-none">
+                 <select v-model="form.category_id" @change="applyFilters" class="w-full bg-white border border-gray-200 pl-3 pr-8 py-2 rounded-lg shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 font-bold text-gray-700 text-[12px] md:text-[13px] cursor-pointer">
                     <option value="">{{ $t('All Categories') }}</option>
                     <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
                  </select>
              </div>
 
-             <div class="flex-grow"></div>
-
-             <button @click="resetFilters" class="px-4 py-2 bg-white border border-gray-200 text-gray-500 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-gray-50 hover:text-gray-900 transition-all shadow-sm flex items-center group">
+             <button @click="resetFilters" class="w-full md:w-auto px-4 py-2 bg-white border border-gray-200 text-gray-500 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-gray-50 hover:text-gray-900 transition-all shadow-sm flex items-center justify-center group">
                  <svg class="w-3.5 h-3.5 mr-1.5 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                  {{ $t('Reset') }}
              </button>
-             
         </div>
 
         <!-- Product Cards Grid Layout matching UI Dashboard.webp -->
@@ -121,21 +116,20 @@
         </div>
 
         <!-- Pagination -->
-        <div class="mt-6 flex justify-between items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-sm" v-if="products.links && products.data.length > 0">
-            <div class="text-[13px] font-bold text-gray-400">
-                {{ $t('Showing') }} <span class="text-gray-900">{{ products.from }}</span> {{ $t('to') }} <span class="text-gray-900">{{ products.to }}</span> {{ $t('of') }} <span class="text-gray-900">{{ products.total }}</span> {{ $t('entries') }}
+        <div class="mt-6 flex flex-col md:flex-row gap-4 justify-between items-center bg-white p-5 rounded-2xl border border-gray-100 shadow-sm" v-if="products.links && products.data.length > 0">
+            <div class="text-[13px] font-bold text-gray-400 order-2 md:order-1">
+                <span class="hidden sm:inline">{{ $t('Showing') }}</span> <span class="text-gray-900">{{ products.from }}</span> {{ $t('to') }} <span class="text-gray-900">{{ products.to }}</span> {{ $t('of') }} <span class="text-gray-900">{{ products.total }}</span> <span class="hidden sm:inline">{{ $t('entries') }}</span>
             </div>
-            <div class="flex items-center space-x-1.5">
+            <div class="flex items-center space-x-1 order-1 md:order-2">
                 <template v-for="(link, i) in products.links" :key="i">
-                    <!-- Previous/Next arrows using text HTML decode -->
                     <Link 
                         v-if="link.url"
                         :href="link.url"
                         v-html="link.label"
-                        class="min-w-[2rem] px-2 py-1.5 border rounded-lg text-xs font-bold flex items-center justify-center transition-colors"
-                        :class="[link.active ? 'bg-orange-50 border-orange-500 text-orange-600' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900']"
+                        class="min-w-[2rem] h-9 px-2 py-1.5 border rounded-lg text-xs font-bold flex items-center justify-center transition-all"
+                        :class="[link.active ? 'bg-orange-600 border-orange-600 text-white shadow-md shadow-orange-500/20' : 'bg-white border-gray-200 text-gray-600 hover:border-orange-500 hover:text-orange-600']"
                     />
-                    <span v-else v-html="link.label" class="min-w-[2rem] px-2 py-1.5 border rounded-lg text-xs font-bold bg-gray-50 border-gray-100 text-gray-400 flex items-center justify-center"></span>
+                    <span v-else v-html="link.label" class="min-w-[2rem] h-9 px-2 py-1.5 border rounded-lg text-xs font-bold bg-gray-50 border-gray-100 text-gray-400 flex items-center justify-center"></span>
                 </template>
             </div>
         </div>
